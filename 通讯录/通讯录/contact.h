@@ -19,6 +19,7 @@ void showcontact(const struct contact* cp);
 void delcontact(struct contact* p);
 void seacontact(const struct contact* p);
 void modcontact(struct contact* p);
+void sortcontact(struct contact* p);
 
 
 struct people

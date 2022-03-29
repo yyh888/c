@@ -40,6 +40,7 @@ int main()
 			showcontact(&con);
 			break;
 		case sort:
+			sortcontact(&con);
 			break;
 		default:
 			printf("输入错误，请重新输入\n");

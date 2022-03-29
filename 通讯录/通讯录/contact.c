@@ -141,3 +141,24 @@ void modcontact(struct contact* p)
 		printf("保存成功\n");
 	}
 }
+
+
+void sortcontact(struct contact* p)
+{
+	int i = 0;
+	for (i = 0; i < p->size; i++)
+	{
+		int j = 0;
+		for (j = 0; j < p->size - i - 1; j++)
+		{
+			if (strcmp(p->peo[j].name, p->peo[j + 1].name) > 0)
+			{
+				struct people a = { 0 };
+				a = p->peo[j];
+				p->peo[j] = p->peo[j + 1];
+				p->peo[j + 1] = a;
+			}
+		}
+	}
+	printf("排序完成\n");
+}
