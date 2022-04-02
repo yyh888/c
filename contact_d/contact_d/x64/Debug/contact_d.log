@@ -1,0 +1,3 @@
+﻿  contact.c
+D:\vs2022\contact_d\contact.c(28,15): warning C4133: “=”: 从“contact *”到“people *”的类型不兼容
+  contact_d.vcxproj -> D:\vs2022\contact_d\x64\Debug\contact_d.exe
