@@ -1,0 +1,4 @@
+﻿  blog.c
+D:\vs2022\blog_4_4\blog_4_4\blog.c(138,9): warning C4477: “printf”: 格式字符串“%u”需要类型“unsigned int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\vs2022\blog_4_4\blog_4_4\blog.c(138,9): message : 请考虑在格式字符串中使用“%zu”
+  blog_4_4.vcxproj -> D:\vs2022\blog_4_4\x64\Debug\blog_4_4.exe
