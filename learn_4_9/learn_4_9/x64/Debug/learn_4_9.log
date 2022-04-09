@@ -1,0 +1,4 @@
+﻿  learn.c
+D:\vs2022\learn_4_9\learn_4_9\learn.c(92,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\vs2022\learn_4_9\learn_4_9\learn.c(92,9): message : 请考虑在格式字符串中使用“%zd”
+  learn_4_9.vcxproj -> D:\vs2022\learn_4_9\x64\Debug\learn_4_9.exe
