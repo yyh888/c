@@ -1,0 +1,5 @@
+﻿  learn.c
+D:\vs2022\learn_4_10\learn_4_10\learn.c(164,8): warning C4101: “a”: 未引用的局部变量
+D:\vs2022\learn_4_10\learn_4_10\learn.c(164,11): warning C4101: “b”: 未引用的局部变量
+D:\vs2022\learn_4_10\learn_4_10\learn.c(164,14): warning C4101: “c”: 未引用的局部变量
+  learn_4_10.vcxproj -> D:\vs2022\learn_4_10\x64\Debug\learn_4_10.exe
