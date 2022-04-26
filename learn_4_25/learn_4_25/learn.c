@@ -39,9 +39,11 @@ void SeqCheckCapacity(SeqList* pq)
 void SeqListPushBack(SeqList* pq, SeqDateType x)
 {
 	assert(pq);
-	SeqCheckCapacity(pq);
+	int pos = pq->size;
+	SeqListInsert(pq, pos, x);
+	/*SeqCheckCapacity(pq);
 	pq->a[pq->size] = x;
-	pq->size++;
+	pq->size++;*/
 }
 
 
@@ -58,7 +60,9 @@ void SeqListPrint(SeqList* pq)
 void SeqListPushFront(SeqList* pq, SeqDateType x)
 {
 	assert(pq);
-	SeqCheckCapacity(pq);
+	int pos = 0;
+	SeqListInsert(pq, pos, x);
+	/*SeqCheckCapacity(pq);
 	int end = pq->size - 1;
 	while (end >= 0)
 	{
@@ -66,29 +70,33 @@ void SeqListPushFront(SeqList* pq, SeqDateType x)
 		end--;
 	}
 	pq->a[0] = x;
-	pq->size++;
+	pq->size++;*/
 }
 
 
 void SeqListPopBack(SeqList* pq)
 {
 	assert(pq);
-	assert(pq->size > 0);
-	pq->size--;
+	int pos = pq->size - 1;
+	SeqListPop(pq, pos);
+	/*assert(pq->size > 0);
+	pq->size--;*/
 }
 
 
 void SeqListPopFront(SeqList* pq)
 {
 	assert(pq);
-	assert(pq->size > 0);
+	int pos = 0;
+	SeqListPop(pq, pos);
+	/*assert(pq->size > 0);
 	int start = 0;
 	while (start < pq->size - 1)
 	{
 		pq->a[start] = pq->a[start + 1];
 		start++;
 	}
-	pq->size--;
+	pq->size--;*/
 }
 
 
@@ -104,4 +112,33 @@ int SeqListSearch(SeqList* pq, SeqDateType x)
 		}
 	}
 	return -1;
+}
+
+
+void SeqListInsert(SeqList* pq, int pos, SeqDateType x)
+{
+	assert(pq);
+	SeqCheckCapacity(pq);
+	int end = pq->size - 1;
+	while (end >= pos)
+	{
+		pq->a[end + 1] = pq->a[end];
+		end--;
+	}
+	pq->size++;
+	pq->a[pos] = x;
+}
+
+
+void SeqListPop(SeqList* pq, int pos)
+{
+	assert(pq);
+	assert(pq->size > 0);
+	SeqCheckCapacity(pq);
+	while (pos < pq->size - 1)
+	{
+		pq->a[pos] = pq->a[pos + 1];
+		pos++;
+	}
+	pq->size--;
 }
