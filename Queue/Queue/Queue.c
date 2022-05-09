@@ -57,9 +57,12 @@ void QueuePop(Queue* pst)
 		free(pst->head);
 		pst->head = pst->tail = NULL;
 	}
-	QueueNode* next = pst->head->next;
-	free(pst->head);
-	pst->head = next;
+	else
+	{
+		QueueNode* next = pst->head->next;
+		free(pst->head);
+		pst->head = next;
+	}
 }
 
 
@@ -81,6 +84,7 @@ QDateType QueueFront(Queue* pst)
 	return pst->head->date;
 }
 
+//Õæ·µ»Ø·Ç0
 bool QueueEmpty(Queue* pst)
 {
 	assert(pst);
