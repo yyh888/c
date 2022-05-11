@@ -8,16 +8,15 @@
 
 int main()
 {
-	int arr[] = { 15, 18, 28, 34, 65, 19, 49, 25, 37, 27 };
+	int arr[] = { 0,1,1,2,4,4};
 	int n = sizeof(arr) / sizeof(arr[0]);
+	
 	//HeapSort(arr, n);
 	HP hp;
-	HeapInit(&hp, arr, n);
-	HeapPush(&hp, 88);
-	HeapPush(&hp, 8);
-	HeapPush(&hp, 888);
-	HeapPrint(&hp);
-	HeapPop(&hp);
+	for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+	{
+		AdJustDown(arr, i, n);
+	}
 	HeapPrint(&hp);
 	/*HeapPop(&hp);
 	HeapPrint(&hp);

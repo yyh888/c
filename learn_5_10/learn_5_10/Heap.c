@@ -41,7 +41,7 @@ void AdJustDown(HPDateType* a, HPDateType parent, HPDateType n)
 		}
 		if (a[child] > a[parent])
 		{
-			Swop(&a[parent], &a[child]);
+			Swop(&a[child], &a[parent]);
 			parent = child;
 			child = parent * 2 + 1;
 		}
