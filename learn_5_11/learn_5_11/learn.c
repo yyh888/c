@@ -4,7 +4,7 @@
 
 
 
-typedef int BTDateType;
+typedef char BTDateType;
 
 typedef struct BinaryTreeNode
 {
@@ -116,7 +116,42 @@ int TreeKLevelSize(BTNode* root, BTDateType k)
 
 BTNode* TreeFind(BTNode* root, BTDateType x)
 {
+	if (root == NULL)
+	{
+		return NULL;
+	}
+	if(root->date == x)
+	{
+		return root;
+	}
+	else
+	{
+		BTNode* tmp1 = TreeFind(root->left, x);
+		if (tmp1)
+		{
+			return tmp1;
+		}
+		BTNode* tmp2 = TreeFind(root->right, x);
+		if (tmp2)
+		{
+			return tmp2;
+		}
+	}
+	return NULL;
+}
 
+
+
+void TreeNodeDestroy(BTNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+
+	TreeNodeDestroy(root->left);
+	TreeNodeDestroy(root->right);
+	free(root);
 }
 
 
@@ -134,9 +169,11 @@ int main()
 	B->left = D;
 	C->left = E;
 	C->right = F;
+	
 	//PrevOrder(A);
 	//InOrder(A);
 	//printf("%d", BTSize(A));
 	//printf("%d", TreeLeafSize(A));
+	printf("%d", TreeKLevelSize(A, 3));
 	return 0;
 }
