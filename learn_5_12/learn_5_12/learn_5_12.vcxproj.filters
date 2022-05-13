@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\learn_5_11\learn_5_11\learn.c">
+    <ClCompile Include="Queue.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Queue\Queue\Queue.c">
+    <ClCompile Include="learn.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Queue\Queue\Queue.h">
+    <ClInclude Include="Queue.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

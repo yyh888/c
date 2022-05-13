@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\learn_5_11\learn_5_11\learn.c" />
-    <ClCompile Include="..\..\Queue\Queue\Queue.c" />
+    <ClCompile Include="learn.c" />
+    <ClCompile Include="Queue.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Queue\Queue\Queue.h" />
+    <ClInclude Include="Queue.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

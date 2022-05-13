@@ -7,7 +7,14 @@
 
 
 
+typedef char BTDateType;
 
+typedef struct BinaryTreeNode
+{
+	struct BinaryTreeNode* left;
+	struct BinaryTreeNode* right;
+	BTDateType date;
+}BTNode;
 
 typedef int QDateType;
 

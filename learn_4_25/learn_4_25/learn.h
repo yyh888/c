@@ -25,3 +25,11 @@ extern void SeqListPopFront(SeqList* pq);
 extern int SeqListSearch(SeqList* pq, SeqDateType x);
 extern void SeqListInsert(SeqList* pq, int pos, SeqDateType x);
 extern void SeqListPop(SeqList* pq, int pos);
+
+
+
+
+
+
+
+
