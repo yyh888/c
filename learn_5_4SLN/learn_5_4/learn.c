@@ -140,3 +140,6 @@ void ListErase(ListNode* pos, LTDateType x)
 	newnode->next = next;
 	next->prev = newnode;
 }
+
+
+
