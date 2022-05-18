@@ -1,0 +1,7 @@
+﻿  Queue.c
+  Test.c
+  正在生成代码...
+D:\learn\learn\队列blog\队列blog\Queue.c(68): warning C4716: “QueueBack”: 必须返回一个值
+Queue.obj : error LNK2019: 无法解析的外部符号 QueueEmpty，函数 QueueBack 中引用了该符号
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 无法解析的外部符号 main，函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中引用了该符号
+D:\learn\learn\队列blog\x64\Debug\队列blog.exe : fatal error LNK1120: 2 个无法解析的外部命令
