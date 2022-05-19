@@ -1,13 +1,13 @@
 #include"Queue.h"
 
 
-extern void QueueInit(Queue* pq)
+void QueueInit(Queue* pq)
 {
 	assert(pq);
 	pq->head = pq->tail = NULL;
 }
 
-extern void QueueDestroy(Queue* pq)
+void QueueDestroy(Queue* pq)
 {
 	assert(pq);
 	QueueNode* cur = pq->head;
@@ -20,14 +20,15 @@ extern void QueueDestroy(Queue* pq)
 	pq->head = pq->tail = NULL;
 }
 
-extern void QueuePush(Queue* pq, QDateType x)
+void QueuePush(Queue* pq, QDateType x)
 {
 	assert(pq);
 	QueueNode* newnode = (QueueNode*)malloc(sizeof(QueueNode));
+	newnode->date = x;
+	newnode->next = NULL;
 	if (pq->head == NULL)
 	{
 		pq->head = pq->tail = newnode;
-		newnode->next = NULL;
 	}
 	else
 	{
@@ -36,7 +37,7 @@ extern void QueuePush(Queue* pq, QDateType x)
 	}
 }
 
-extern void QueuePop(Queue* pq)
+void QueuePop(Queue* pq)
 {
 	assert(pq);
 	assert(!QueueEmpty(pq));
