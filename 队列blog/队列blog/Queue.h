@@ -25,11 +25,11 @@ typedef struct Queue
 
 
 
-extern void QueueInit(Queue* pq);
-extern void QueueDestroy(Queue* pq);
-extern void QueuePush(Queue* pq, QDateType x);
-extern void QueuePop(Queue* pq);
-extern QDateType QueueFront(Queue* pq);
-extern QDateType QueueBack(Queue* pq);
-extern bool QueueEmpty(Queue* pq);
-extern int QueueSize(Queue* pq);
+extern void QueueInit(Queue* pq);//初始化
+extern void QueueDestroy(Queue* pq);//销毁
+extern void QueuePush(Queue* pq, QDateType x);//入队
+extern void QueuePop(Queue* pq);//出队
+extern QDateType QueueFront(Queue* pq);//取出队头数据
+extern QDateType QueueBack(Queue* pq);//取出队尾数据
+extern bool QueueEmpty(Queue* pq);//判空
+extern int QueueSize(Queue* pq);//求大小
