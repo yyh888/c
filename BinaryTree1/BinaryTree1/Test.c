@@ -1,5 +1,6 @@
 #include"Queue.h"
 
+
 typedef char BTDataType;
 typedef struct BinaryTreeNode
 {
@@ -7,6 +8,7 @@ typedef struct BinaryTreeNode
 	struct BinaryTreeNode* right;
 	BTDataType data;
 }BTNode;
+
 
 
 void PrevOrder(BTNode* x)
@@ -33,7 +35,7 @@ void InOrder(BTNode* x)
 	}
 	InOrder(x->left);
 	printf("%c ", x->data);
-	InOrder(x->right);					
+	InOrder(x->right);
 }
 
 
@@ -149,10 +151,66 @@ void TreeLevelOrder(BTNode* root)
 {
 	Queue q;
 	QueueInit(&q);
-	
+	if (root)
+	{
+		QueuePush(&q, root);
+	}
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+		printf("%c ", front->data);
+		if (front->left)
+		{
+			QueuePush(&q, front->left);
+		}
+		if (front->right)
+		{
+			QueuePush(&q, front->right);
+		}
+	}
 
 
 	QueueDestroy(&q);
+}
+
+
+
+bool BinaryTreeComplete(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root)
+	{
+		QueuePush(&q, root);
+	}
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+		if (front == NULL)
+		{
+			break;
+		}
+		else
+		{
+			QueuePush(&q, front->left);
+			QueuePush(&q, front->right);
+		}
+	}
+
+	while (!QueueEmpty(&q))
+	{
+		BTNode* cur = QueueFront(&q);
+		QueuePop(&q);
+		if (cur)
+		{
+			QueueDestroy(&q);
+			return false;
+		}
+	}
+	QueueDestroy(&q);
+	return true;
 }
 
 
@@ -166,8 +224,10 @@ int main()
 	BTNode* D = CreatNode('D');
 	BTNode* E = CreatNode('E');
 	BTNode* F = CreatNode('F');
+	BTNode* G = CreatNode('G');
 	A->left = B;
 	B->left = D;
+	B->right = G;
 	A->right = C;
 	C->left = E;
 	C->right = F;
@@ -179,6 +239,11 @@ int main()
 	printf("%d\n", LeafSize(A));
 	printf("k = %d\n", TreeLevelSize(A, 2));
 	printf("%p\n", TreeFind(A, 'C'));
+	TreeLevelOrder(A);
+	printf("\n");
+	printf("%d\n", BinaryTreeComplete(A));
+
+
 	TreeDestroy(&A);
 	return 0;
 }

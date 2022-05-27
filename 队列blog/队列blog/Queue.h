@@ -6,7 +6,7 @@
 
 
 
-typedef int QDateType;
+typedef BTNode* QDateType;
 
 
 typedef struct QueueNode
