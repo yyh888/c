@@ -183,3 +183,131 @@ void BubbleSort(int* a, int n)
 		}
 	}
 }
+
+
+
+int GetMidIndex(int* a, int left, int right)
+{
+	int mid = (left + right) >> 1;
+	if (a[left] < a[mid])
+	{
+		if (a[right] < a[left])
+		{
+			return left;
+		}
+		else if (a[right] < a[mid])
+		{
+			return right;
+		}
+		else
+		{
+			return mid;
+		}
+	}
+	//a[mid] <= a[left]
+	else
+	{
+		if (a[right] < a[mid])
+		{
+			return mid;
+		}
+		else if (a[right] < a[left])
+		{
+			return right;
+		}
+		else
+		{
+			return left;
+		}
+	}
+}
+
+
+//heron法
+int PartSort(int* a, int left, int right)
+{
+	int key = left;
+	while (left < right)
+	{
+		//找小
+		while (right > left && a[right] >= a[key])
+		{
+			right--;
+		}
+		//找大
+		while (right > left && a[left] <= a[key])
+		{
+			left++;
+		}
+		Swap(&a[left], &a[right]);
+	}
+	Swap(&a[left], &a[key]);
+	return left;
+}
+
+
+//挖坑法
+int PartSort2(int* a, int left, int right)
+{
+	int midIndex = GetMidIndex(a, left, right);
+	Swap(&a[midIndex], &a[left]);
+	int key = left;
+	while (left < right)
+	{
+		//找小
+		while (left < right && a[key] <= a[right])
+		{
+			right--;
+		}
+		a[left] = a[right];
+		//找大
+		while (left < right && a[key] >= a[left])
+		{
+			left++;
+		}
+		a[right] = a[left];
+	}
+	a[left] = a[key];
+	return left;
+}
+
+//双指针法
+int PartSort3(int* a, int left, int right)
+{
+	int key = left, prev = left, cur = prev + 1;
+	for (; cur <= right; cur++)
+	{
+		if (a[cur] < a[key])
+		{
+			prev++;
+			Swap(&a[cur], &a[prev]);
+		}
+	}
+	Swap(&a[prev], &a[key]);
+	return prev;
+	//数组不能用指针为空判断
+	/*int key = left, *prev = &a[left], *cur = &a[left] + 1;
+	while (cur)
+	{
+		if (*cur < *prev)
+		{
+			prev++;
+			Swap(cur, prev);
+		}
+		cur++;
+	}
+	Swap(&a[key], prev);
+	return key;*/
+}
+
+
+void QuickSort(int* a, int begin, int end)
+{
+	if (begin >= end)
+	{
+		return;
+	}
+	int key = PartSort3(a, begin, end);
+	QuickSort(a, begin, key - 1);
+	QuickSort(a, key + 1, end);
+}
