@@ -1,7 +1,5 @@
 #include"Sort.h"
 
-
-
 void Swap(int* a, int* b)
 {
 	int tmp = *a;
@@ -271,15 +269,16 @@ int PartSort2(int* a, int left, int right)
 	return left;
 }
 
-//双指针法
+//前后指针法
 int PartSort3(int* a, int left, int right)
 {
+	int midIndex = GetMidIndex(a, left, right);
+	Swap(&a[midIndex], &a[left]);
 	int key = left, prev = left, cur = prev + 1;
 	for (; cur <= right; cur++)
 	{
-		if (a[cur] < a[key])
+		if (a[cur] < a[key] && ++prev != cur)
 		{
-			prev++;
 			Swap(&a[cur], &a[prev]);
 		}
 	}
@@ -307,7 +306,20 @@ void QuickSort(int* a, int begin, int end)
 	{
 		return;
 	}
-	int key = PartSort3(a, begin, end);
-	QuickSort(a, begin, key - 1);
-	QuickSort(a, key + 1, end);
+	//数较多时，key单趟
+	//数较少时，用递归分治不划算
+	if (end - begin > 10)
+	{
+		int key = PartSort3(a, begin, end);
+		QuickSort(a, begin, key - 1);
+		QuickSort(a, key + 1, end);
+	}
+	else
+	{
+		InSort(a + begin, end + begin + 1);
+	}
 }
+
+
+//非递归快排
+void QuickSortNoR(int* a, int begin, int end)

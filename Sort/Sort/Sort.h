@@ -14,7 +14,8 @@ void SelectSort(int* a, int n);
 void BubbleSort(int* a, int n);
 //¿ìÅÅ
 void QuickSort(int* a, int begin, int end);
-
+//·Çµİ¹é¿ìÅÅ
+void QuickSortNoR(int* a, int begin, int end);
 
 
 
