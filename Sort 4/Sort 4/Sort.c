@@ -356,6 +356,32 @@ void QuickSortNoR(int* a, int begin, int end)
 
 
 
+void Merge(int* a, int* tmp, int begin1, int end1, int begin2, int end2)
+{
+	int i = begin1;
+	int j = begin1;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+		{
+			tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+	while (begin1 <= end1)
+		tmp[i++] = a[begin1++];
+	while (begin2 <= end2)
+		tmp[i++] = a[begin2++];
+	//归并完成后，拷贝回原数组
+	for (int i = j; i <= end2; i++)
+	{
+		a[i] = tmp[i];
+	}
+}
+
 
 
 void _MergeSort(int* a, int left, int right, int* tmp)
@@ -368,29 +394,7 @@ void _MergeSort(int* a, int left, int right, int* tmp)
 	//[left, mid] [mid + 1, right]
 	_MergeSort(a, left, mid, tmp);
 	_MergeSort(a, mid + 1, right, tmp);
-	int begin1 = left, end1 = mid;
-	int begin2 = mid + 1, end2 = right;
-	int i = left;
-	while (begin1 <= end1 && begin2 <= end2)
-	{
-		if (a[begin1] < a[begin2])
-		{
-			tmp[i++] = a[begin1++];
-		}
-		else
-		{
-			tmp[i++] = a[begin2++];
-		}
-	}
-		while(begin1 <= end1)
-		tmp[i++] = a[begin1++];
-		while (begin2 <= end2)
-		tmp[i++] = a[begin2++];
-		//归并完成后，拷贝回原数组
-		for (int i = left; i <= right; i++)
-		{
-			a[i] = tmp[i];
-		}
+	Merge(a, tmp, left, mid, mid + 1, right);
 }
 
 
@@ -416,5 +420,60 @@ void MergeSortNoR(int* a, int n)
 		printf("malloc fail\n");
 		exit(-1);
 	}
+	int gap = 1;
+	while (gap < n)
+	{
+		for (int i = 0; i < n; i += 2 * gap)
+		{
+			int begin1 = i, end1 = i + gap - 1;
+			int begin2 = i + gap, end2 = i + 2 * gap - 1;
+			//第二个区间不存在，不需要归并
+			if (begin2 >= n)
+			{
+				break;
+			}
+			//第二个区间存在，不够gap个
+			if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			Merge(a, tmp, begin1, end1, begin2, end2);
+		}
+		gap *= 2;
+	}
+	free(tmp);
+}
 
+
+void CountSort(int* a, int n)
+{
+	int min = a[0], max = a[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (min > a[i])
+		{
+			min = a[i];
+		}
+		if (max < a[i])
+		{
+			max = a[i];
+		}
+	}
+	int range = max - min + 1;
+	int* count = (int*)malloc(sizeof(int) * range);
+	memset(count, 0, sizeof(int) * range);
+	for (int i = 0; i < n; i++)
+	{
+		count[a[i] - min]++;
+	}
+	int i = 0;
+	for (int j = 0; j < range; j++)
+	{
+		while (count[j]--)
+		{
+			a[i++] = j + min;
+		}
+	}
+
+	free(count);
 }

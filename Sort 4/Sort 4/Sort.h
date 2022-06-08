@@ -20,7 +20,8 @@ void QuickSortNoR(int* a, int begin, int end);
 void MergeSort(int* a, int n);
 //非递归归并
 void MergeSortNoR(int* a, int n);
-
+//计数排序
+void CountSort(int* a, int n);
 
 
 void PrintSort(int* a, int n);
