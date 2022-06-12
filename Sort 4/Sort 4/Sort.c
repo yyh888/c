@@ -8,7 +8,7 @@ void Swap(int* a, int* b)
 	*b = tmp;
 }
 
-/*void InSort(int* a, int n)
+void InSort(int* a, int n)
 {
 	for(int i = 1; i < n; i++)
 	{
@@ -21,7 +21,7 @@ void Swap(int* a, int* b)
 		}
 		a[j] = tmp;
 	}
-}*/
+}
 
 
 
@@ -35,27 +35,27 @@ void PrintSort(int* a, int n)
 
 
 
-void InSort(int* a, int n)
-{
-	for (int i = 1; i < n; i++)
-	{
-		int tmp = a[i];
-		int end = i - 1;
-		while (end >= 0)
-		{
-			if (a[end] > tmp)
-			{
-				a[end + 1] = a[end];
-				end--;
-			}
-			else
-			{
-				break;
-			}
-		}
-		a[end + 1] = tmp;
-	}
-}
+//void InSort(int* a, int n)
+//{
+//	for (int i = 1; i < n; i++)
+//	{
+//		int tmp = a[i];
+//		int end = i - 1;
+//		while (end >= 0)
+//		{
+//			if (a[end] > tmp)
+//			{
+//				a[end + 1] = a[end];
+//				end--;
+//			}
+//			else
+//			{
+//				break;
+//			}
+//		}
+//		a[end + 1] = tmp;
+//	}
+//}
 
 
 
