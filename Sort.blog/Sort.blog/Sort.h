@@ -9,8 +9,10 @@ void ShellSort(int* a, int n);
 void SelectSort(int* a, int n);
 //╤яеепР
 void HeapSort(int* a, int n);
-
-
+//ц╟ещеепР
+void BubbleSort(int* a, int n);
+//©Лее
+void QuickSort(int* a, int begin, int end);
 
 
 

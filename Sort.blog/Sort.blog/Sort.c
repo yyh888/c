@@ -159,3 +159,98 @@ void HeapSort(int* a, int n)
 		end--;
 	}
 }
+
+
+
+void BubbleSort(int* a, int n)
+{
+	for (int i = 0; i < n - 1; i++)
+	{
+		//用来判断是否交换过，提高效率
+		int flag = 1;
+		for (int cur = 0; cur < n - 1 - i; cur++)
+		{
+			if (a[cur + 1] < a[cur])
+			{
+				Swap(&a[cur], &a[cur + 1]);
+				flag = 0;
+			}
+		}
+		if (flag)
+		{
+			break;
+		}
+	}
+}
+
+
+int GetMidIndex(int* a, int left, int right)
+{
+
+}
+
+
+
+//hoare法
+int PartSort(int* a, int begin, int end)
+{
+	int keyi = begin;
+	int left = begin, right = end;
+	while (left < right)
+	{
+		//右找小
+		while (left < right && a[right] >= a[keyi])
+		{
+			right--;
+		}
+		//左找大
+		while (left < right && a[left] <= a[keyi])
+		{
+			left++;
+		}
+		if (left < right)
+		{
+			Swap(&a[left], &a[right]);
+		}
+	}
+	Swap(&a[keyi], &a[left]);
+	return left;
+}
+
+
+//挖坑法
+int PartSort1(int* a, int begin, int end)
+{
+	int tmp = a[begin];
+	int left = begin, right = end;
+	while (left < right)
+	{
+		//右边先找小
+		while (left < right && a[right] >= tmp)
+		{
+			right--;
+		}
+		a[left] = a[right];
+		//左边找大的
+		while (left < right && a[left] <= tmp)
+		{
+			left++;
+		}
+		a[right] = a[left];
+	}
+	a[left] = tmp;
+	return left;
+}
+
+
+void QuickSort(int* a, int begin, int end)
+{
+	//中间没有元素就返回
+	if (begin >= end)
+	{
+		return;
+	}
+	int keyi = PartSort1(a, begin, end);
+	QuickSort(a, begin, keyi - 1);
+	QuickSort(a, keyi + 1, end);
+}
