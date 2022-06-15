@@ -1,5 +1,5 @@
 #include"Sort.h"
-
+#include"Stack.h"
 
 void Swap(int* a, int* b)
 {
@@ -186,7 +186,37 @@ void BubbleSort(int* a, int n)
 
 int GetMidIndex(int* a, int left, int right)
 {
-
+	int mid = (left + right) >> 1;
+	if (a[left] < a[right])
+	{
+		if (a[mid] < a[left])
+		{
+			return left;
+		}
+		else if (a[mid] > a[right])
+		{
+			return right;
+		}
+		else
+		{
+			return mid;
+		}
+	}
+	else
+	{
+		if (a[mid] < a[right])
+		{
+			return right;
+		}
+		else if (a[mid] > a[left])
+		{
+			return left;
+		}
+		else
+		{
+			return mid;
+		}
+	}
 }
 
 
@@ -194,6 +224,8 @@ int GetMidIndex(int* a, int left, int right)
 //hoare法
 int PartSort(int* a, int begin, int end)
 {
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
 	int keyi = begin;
 	int left = begin, right = end;
 	while (left < right)
@@ -221,6 +253,8 @@ int PartSort(int* a, int begin, int end)
 //挖坑法
 int PartSort1(int* a, int begin, int end)
 {
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
 	int tmp = a[begin];
 	int left = begin, right = end;
 	while (left < right)
@@ -243,6 +277,26 @@ int PartSort1(int* a, int begin, int end)
 }
 
 
+
+//前后指针法
+int PartSort2(int* a, int left, int right)
+{
+	int key = left;
+	int prev = left, cur = prev + 1;
+	while (cur <= right)
+	{
+		if (a[cur] < a[key])
+		{
+			prev++;
+			Swap(&a[cur], &a[prev]);
+		}
+		cur++;
+	}
+	Swap(&a[prev], &a[key]);
+	return prev;
+}
+
+
 void QuickSort(int* a, int begin, int end)
 {
 	//中间没有元素就返回
@@ -250,7 +304,47 @@ void QuickSort(int* a, int begin, int end)
 	{
 		return;
 	}
-	int keyi = PartSort1(a, begin, end);
-	QuickSort(a, begin, keyi - 1);
-	QuickSort(a, keyi + 1, end);
+	if(end - begin > 10)
+	{ 
+		int keyi = PartSort2(a, begin, end);
+		QuickSort(a, begin, keyi - 1);
+		QuickSort(a, keyi + 1, end);
+	}
+	else
+	{
+		//a + begin 是要插入排序的开始位置
+		//end - begin 是长度  +1就是元素个数
+		InSertSort(a + begin, end - begin + 1);
+	}
+}
+
+
+//非递归快排
+void QuickSortNonR(int* a, int begin, int end)
+{
+	Stack st;
+	StackInit(&st);
+	StackPush(&st, begin);
+	StackPush(&st, end);
+	while (!StackEmpty(&st))
+	{
+		int right = StackTop(&st);
+		StackPop(&st);
+		int left = StackTop(&st);
+		StackPop(&st);
+		int key = PartSort(a, left, right);
+		//key左边有区间就入栈
+		if (left < key - 1)
+		{
+			StackPush(&st, left);
+			StackPush(&st, key - 1);
+		}
+		//key右边有数据就入栈
+		if (right > key + 1)
+		{
+			StackPush(&st, key + 1);
+			StackPush(&st, right);
+		}
+	}
+	StackDestroy(&st);
 }
