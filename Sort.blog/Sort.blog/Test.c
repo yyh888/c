@@ -13,7 +13,9 @@ int main()
 	//SelectSort(a, n);
 	//BubbleSort(a, n);
 	//QuickSort(a, 0, n - 1);
-	QuickSortNonR(a, 0, n - 1);
+	//QuickSortNonR(a, 0, n - 1);
+	//MergeSortNonR(a, n);
+	CountSort(a, n);
 	SortPrint(a, n);
 	return 0;
 }

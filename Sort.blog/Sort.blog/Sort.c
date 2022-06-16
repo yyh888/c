@@ -348,3 +348,134 @@ void QuickSortNonR(int* a, int begin, int end)
 	}
 	StackDestroy(&st);
 }
+
+void _MergeSort(int* a, int* tmp, int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	//注意中间下标求法
+	int mid = (left + right) >> 1;
+	//对左序列归并
+	_MergeSort(a, tmp, left, mid);
+	//对右序列归并
+	_MergeSort(a, tmp, mid + 1, right);
+	_Merge(a, tmp, left, mid, mid + 1, right);
+	//把tmp拷回数组
+}
+
+
+
+void _Merge(int* a, int* tmp, int begin1, int end1, int begin2, int end2)
+{
+	//用i记录放入tmp的位置
+	int i = begin1;
+	int j = begin1;
+	//归并两个序列放入tmp中
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+		{
+			tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+	while (begin2 <= end2)
+	{
+		tmp[i++] = a[begin2++];
+	}
+	while (begin1 <= end1)
+	{
+		tmp[i++] = a[begin1++];
+	}
+	for (; j <= end2; j++)
+	{
+		a[j] = tmp[j];
+	}
+}
+
+
+//归并排序
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	_MergeSort(a, tmp, 0, n - 1);
+	free(tmp);
+}
+
+
+//非递归归并
+void MergeSortNonR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	int gap = 1;
+	while (gap < n)
+	{
+		for (int i = 0; i < n - gap; i += gap)
+		{
+			int begin1 = i, end1 = i + gap - 1;
+			int begin2 = i + gap, end2 = i + 2 * gap - 1;
+			//第一种情况
+			if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			//第二、三种情况
+			if (begin2 >= n)
+			{
+				break;
+			}
+			//画图判断边界
+			_Merge(a, tmp, begin1, end1, begin2, end2);
+		}
+		gap *= 2;
+	}
+	free(tmp);
+}
+
+//计数排序
+void CountSort(int* a, int n)
+{
+	//记录最小元素
+	int min = a[0];
+	//记录最大元素
+	int max = a[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (min > a[i])
+		{
+			min = a[i];
+		}
+		if (max < a[i])
+		{
+			max = a[i];
+		}
+	}
+	int range = max - min + 1;
+	//不能用malloc，会让count数组有随机值
+	int* count = (int*)calloc(range, sizeof(int));
+	if (count == NULL)
+	{
+		printf("realloc fail\n");
+		exit(-1);
+	}
+	//统计次数
+	for (int i = 0; i < n; i++)
+	{
+		count[a[i] - min]++;
+	}
+	//返回原来数组a
+	int i = 0;
+	for (int j = 0; j < range; j++)
+	{
+		while (count[j]--)
+		{
+			a[i++] = j + min;
+		}
+	}
+	free(count);
+}

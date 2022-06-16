@@ -1,6 +1,9 @@
 #pragma once
 #include<stdio.h>
 
+
+
+void _Merge(int* a, int* tmp, int begin1, int end1, int begin2, int end2);
 //²åÈëÅÅĞò
 void InSertSort(int* a, int n);
 //Ï£¶ûÅÅĞò
@@ -15,8 +18,12 @@ void BubbleSort(int* a, int n);
 void QuickSort(int* a, int begin, int end);
 //·Çµİ¹é¿ìÅÅ
 void QuickSortNonR(int* a, int begin, int end);
-
-
+//¹é²¢ÅÅĞò
+void MergeSort(int* a, int n);
+//·Çµİ¹é¹é²¢
+void MergeSortNonR(int* a, int n);
+//¼ÆÊıÅÅĞò
+void CountSort(int* a, int n);
 
 
 
