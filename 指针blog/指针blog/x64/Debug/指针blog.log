@@ -1,0 +1,38 @@
+﻿  test.c
+D:\learn\learn\指针blog\指针blog\test.c(25,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(25,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(26,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(26,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(27,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(27,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(28,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(28,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(29,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(29,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(30,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(30,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(31,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(31,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(32,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(32,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(33,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(33,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(34,28): warning C4047: “函数”:“const char *”与“char”的间接级别不同
+D:\learn\learn\指针blog\指针blog\test.c(34,24): warning C4024: “strlen”: 形参和实参 1 的类型不同
+D:\learn\learn\指针blog\指针blog\test.c(34,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(34,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(35,30): warning C4047: “函数”:“const char *”与“char”的间接级别不同
+D:\learn\learn\指针blog\指针blog\test.c(35,27): warning C4024: “strlen”: 形参和实参 1 的类型不同
+D:\learn\learn\指针blog\指针blog\test.c(35,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(35,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(36,28): warning C4047: “函数”:“const char *”与“char (*)[6]”的间接级别不同
+D:\learn\learn\指针blog\指针blog\test.c(36,24): warning C4024: “strlen”: 形参和实参 1 的类型不同
+D:\learn\learn\指针blog\指针blog\test.c(36,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(36,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(37,32): warning C4047: “函数”:“const char *”与“char (*)[6]”的间接级别不同
+D:\learn\learn\指针blog\指针blog\test.c(37,29): warning C4024: “strlen”: 形参和实参 1 的类型不同
+D:\learn\learn\指针blog\指针blog\test.c(37,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(37,9): message : 请考虑在格式字符串中使用“%zd”
+D:\learn\learn\指针blog\指针blog\test.c(38,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\learn\learn\指针blog\指针blog\test.c(38,9): message : 请考虑在格式字符串中使用“%zd”
+  指针blog.vcxproj -> D:\learn\learn\指针blog\x64\Debug\指针blog.exe
