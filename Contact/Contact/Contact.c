@@ -161,4 +161,5 @@ void ContactSort_by_name(Contact* p)
 {
 	assert(p);
 	_ContactSort_by_name(p, 0, p->size - 1);
+	printf("еепРмЙЁи\n");
 }
