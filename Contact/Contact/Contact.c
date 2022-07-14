@@ -3,7 +3,14 @@
 void ContactInit(Contact* p)
 {
 	assert(p);
-	memset(p->people, 0, sizeof(p->people));
+	PeoInfo* tmp = (PeoInfo*)malloc(sizeof(PeoInfo) * 4);
+	if (tmp == NULL)
+	{
+		printf("%s", strerror(errno));
+		exit(-1);
+	}
+	p->people = tmp;
+	p->capacity = 4;
 	p->size = 0;
 }
 
@@ -27,11 +34,18 @@ int ContactSearch(Contact* p, const char* str)
 void ContactAdd(Contact* p)
 {
 	assert(p);
-	//ÅÐ¶ÏÊÇ·ñÂú
-	if (p->size == MAX)
+	//Âú¾ÍÀ©ÈÝ
+	if (p->size == p->capacity)
 	{
-		printf("Í¨Ñ¶Â¼ÂúÁË\n");
-		return;
+		PeoInfo* tmp = (PeoInfo*)realloc(p->people, sizeof(PeoInfo) * 4);
+		if (tmp == NULL)
+		{
+			printf("%s", strerror(errno));
+			exit(-1);
+		}
+		p->people = tmp;
+		p->capacity += 4;
+		printf("À©ÈÝ³É¹¦\n");
 	}
 	printf("ÇëÊäÈëÐÕÃû\n");
 	scanf("%s", p->people[p->size].name);
