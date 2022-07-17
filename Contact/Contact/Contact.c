@@ -1,5 +1,41 @@
 #include"Contact.h"
 
+
+void LoadContact(Contact* p)
+{
+	FILE* pRead = fopen("contact.txt", "rb");
+	if (pRead == NULL)
+	{
+		perror("LoadContact");
+		return;
+	}
+	PeoInfo tmp = {0};
+	while (fread(&tmp, sizeof(PeoInfo), 1, pRead) == 1)
+	{
+		//增容
+		if (p->size == p->capacity)
+		{
+			PeoInfo* tmp = (PeoInfo*)realloc(p->people, sizeof(PeoInfo) * 4);
+			if (tmp == NULL)
+			{
+				printf("%s", strerror(errno));
+				exit(-1);
+			}
+			p->people = tmp;
+			p->capacity += 4;
+			printf("扩容成功\n");
+		}
+		p->people[p->size] = tmp;
+		p->size++;
+	}
+
+	fclose(pRead);
+	pRead = NULL;
+}
+
+
+
+
 void ContactInit(Contact* p)
 {
 	assert(p);
@@ -12,6 +48,7 @@ void ContactInit(Contact* p)
 	p->people = tmp;
 	p->capacity = 4;
 	p->size = 0;
+	LoadContact(p);
 }
 
 
@@ -176,4 +213,22 @@ void ContactSort_by_name(Contact* p)
 	assert(p);
 	_ContactSort_by_name(p, 0, p->size - 1);
 	printf("排序完成\n");
+}
+
+
+void SaveContact(const Contact* p)
+{
+	assert(p);
+	FILE* pWrite = fopen("contact.txt", "wb");
+	if (pWrite == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return;
+	}
+	for (int i = 0; i < p->size; i++)
+	{
+		fwrite(p->people + i, sizeof(PeoInfo), 1, pWrite);
+	}
+	fclose(pWrite);
+	pWrite = NULL;
 }

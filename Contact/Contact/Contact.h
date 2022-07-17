@@ -36,3 +36,5 @@ int ContactSearch(Contact* p, const char* str);//查找
 void ContactDelete(Contact* p);//删除
 void ContactModify(Contact* p);//修改
 void ContactSort_by_name(Contact* p);//用名字排序
+void SaveContact(const Contact* p);
+void LoadContact(Contact* p);

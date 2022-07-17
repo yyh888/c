@@ -24,6 +24,7 @@ int main()
 		switch (input)
 		{
 		case 0:
+			SaveContact(&con);
 			printf("ÍË³ö\n");
 			break;
 		case 1:
