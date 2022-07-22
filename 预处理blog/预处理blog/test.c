@@ -56,12 +56,105 @@
 //	return 0;
 //}
 
-#define CAT(a, b) a##b
+//#define CAT(a, b) a##b
+//
+//int main()
+//{
+//	printf("%s\n", CAT("abc", "def"));
+//	int ABC = 1;
+//	printf("%d\n", CAT(A, BC));
+//	return 0;
+//}
 
-int main()
-{
-	printf("%s\n", CAT("abc", "def"));
-	int ABC = 1;
-	printf("%d\n", CAT(A, BC));
-	return 0;
-}
+//#define MAX(a, b) (a) > (b) ? (a) : (b)
+//
+//int main()
+//{
+//	int a = 5;
+//	int b = 4;
+//	int m = MAX(a++, b++);
+//	printf("%d\n", m);
+//	printf("%d %d", a, b);
+//	return 0;
+//}
+
+
+//#define MAX(a, b) a > b ? a : b
+//
+//int Max(int a, int b)
+//{
+//	return (a > b ? a : b);
+//}
+
+//#define MAX 100
+//
+//int main()
+//{
+//#undef MAX
+//	MAX;
+//	return 0;
+//}
+
+
+
+//#include <stdio.h>
+//#define __DEBUG__
+//int main()
+//{
+//	int i = 0;
+//	int arr[10] = { 0 };
+//	for (i = 0; i < 10; i++)
+//	{
+//		arr[i] = i;
+//#ifdef __DEBUG__
+//		printf("%d\n", arr[i]);//为了观察数组是否赋值成功。
+//#endif //__DEBUG__
+//	}
+//	return 0;
+//}
+
+
+
+//int main()
+//{
+//#if 0
+//	printf("abc");
+//#endif
+//	return 0;
+//}
+
+
+//#define M 3
+//
+//int main()
+//{
+//#if M < 5
+//	printf("<");
+//#elif M == 5
+//	printf("==");
+//#else
+//	printf(">");
+//#endif
+//	return 0;
+//}
+
+
+
+//#define A 1
+//
+//int main()
+//{
+////#if defined (A)
+////#ifdef A
+//#if !defined(A)
+//#ifndef A
+//	printf("YES");
+//#endif
+//	return 0;
+//}
+
+
+#ifndef __TEST_H__
+#define __TEST_H__
+.....
+#endif
